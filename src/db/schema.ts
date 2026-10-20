@@ -110,6 +110,7 @@ export const habitTags = pgTable('habit_tags', {
 });
 
 export type User = typeof users.$inferSelect;
+export type NewUser = typeof users.$inferInsert;
 export type Habit = typeof habits.$inferSelect;
 export type NewHabit = typeof habits.$inferInsert;
 export type Entry = typeof entries.$inferSelect;
