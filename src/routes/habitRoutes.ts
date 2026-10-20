@@ -10,9 +10,7 @@ router.use(authenticateToken);
 
 router.get('/', habitController.getUserHabits);
 
-router.get('/:id', (req, res) => {
-  res.json({ message: 'One habits' });
-});
+router.get('/:id', habitController.getHabitById);
 
 router.post('/', validateBody(insertHabitSchema), habitController.createHabit);
 
@@ -22,12 +20,8 @@ router.patch(
   habitController.updateHabit,
 );
 
-router.delete('/:id', (req, res) => {
-  res.status(204).json({ message: 'Habit deleted' });
-});
+router.delete('/:id', habitController.deleteHabit);
 
-router.post('/:id/complete', (req, res) => {
-  res.status(201).json({ message: 'Habit completed' });
-});
+router.post('/:id/complete', habitController.completeHabit);
 
 export default router;

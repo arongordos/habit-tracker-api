@@ -13,6 +13,7 @@ import {
   createSelectSchema,
   createUpdateSchema,
 } from 'drizzle-orm/zod';
+import { z } from 'zod';
 
 export const frequencyEnum = pgEnum('frequency', [
   'daily',
@@ -119,5 +120,9 @@ export const insertUserSchema = createInsertSchema(users);
 export const selectUserSchema = createSelectSchema(users);
 export const insertHabitSchema = createInsertSchema(habits, {
   userId: (schema) => schema.optional(),
+}).extend({
+  tagIds: z.array(z.string()).optional(),
 });
-export const updateHabitSchema = createUpdateSchema(habits);
+export const updateHabitSchema = createUpdateSchema(habits).extend({
+  tagIds: z.array(z.string()).optional(),
+});
