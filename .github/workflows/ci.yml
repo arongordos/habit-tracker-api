@@ -12,6 +12,7 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
+      APP_STAGE: test
       DATABASE_URL: ${{ secrets.TEST_DATABASE_URL }}
 
     steps:
