@@ -90,6 +90,7 @@ export const authController = {
           id: user.id,
           email: user.email,
         },
+        accessToken,
       });
     } catch (e) {
       console.error('Login error', e);
